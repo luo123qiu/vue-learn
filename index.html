@@ -15,6 +15,13 @@
     <div v-if="seen">v-if</div>
     <div>调用方法：{{ showTime() }}</div>
     <div :class="classObj">利用计算属性动态设置class</div>
+    <ol>
+        <li v-for="(item, i) in items">{{ i }} - {{ item.name }}</li>
+    </ol>
+    <ul>
+        <li v-for="(value, key, i) in list">{{ i }} - {{ key }} : {{ value }}</li>
+    </ul>
+    <input v-on:keyup.enter="enter()">
 </div>
 <div id="app2">
     {{ message }}
@@ -31,7 +38,26 @@
            message: 'nihao',
             seen: false,
             isActive: true,
-            error: true
+            error: true,
+            items: [
+                {
+                    name: 'Li lei'
+                },
+                {
+                    name: 'Han meimei'
+                },
+                {
+                    name: 'Lily'
+                },
+                {
+                    name: 'lucy'
+                }
+            ],
+            list: {
+               name: 'Li lei',
+                age: '17',
+                Gender: 'Male'
+            }
         },
         computed: {
            computedMessage: function() {
@@ -48,7 +74,10 @@
            showTime: function() {
                var time = new Date();
                return time
-           }
+           },
+            enter: function() {
+               alert('按下了回车')
+            }
         }
     });
     var app2 = new Vue({
