@@ -21,7 +21,7 @@
     <ul>
         <li v-for="(value, key, i) in list">{{ i }} - {{ key }} : {{ value }}</li>
     </ul>
-    <input v-on:keyup.enter="enter()">
+    <input v-on:keyup.enter="enter()" v-model="message">
 </div>
 <div id="app2">
     {{ message }}
@@ -76,7 +76,7 @@
                return time
            },
             enter: function() {
-               alert('按下了回车')
+               alert(this.message)
             }
         }
     });
